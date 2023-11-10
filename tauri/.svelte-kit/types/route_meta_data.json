@@ -1,0 +1,27 @@
+{
+	"/": [
+		"src/routes/+page.ts",
+		"src/routes/+page.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/auth": [
+		"src/routes/auth/+layout.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/auth/sign-in": [
+		"src/routes/auth/sign-in/+page.server.ts",
+		"src/routes/auth/+layout.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/auth/sign-up": [
+		"src/routes/auth/sign-up/+page.server.ts",
+		"src/routes/auth/+layout.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	]
+}
