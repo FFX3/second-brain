@@ -1,11 +1,12 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
+    import type { SubmitFunction } from '@sveltejs/kit'
 
     export let form
 
-    $: errors  = form?.errors
+    const errors  = form?.errors
 
-    function handleSignIn(){
+    const handleSignIn: SubmitFunction = () => {
         return async({ update }) => {
             await update()
         }

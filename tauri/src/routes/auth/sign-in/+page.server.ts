@@ -1,9 +1,14 @@
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 
-export type SignInResponse = {
-    errors: string[]
-}|undefined
+type SignInResponse = {
+    errors: string[],
+    action_id: 'sign_in'
+}
+
+type Response = 
+    SignInResponse
+    | undefined
 
 const schema = zfd.formData({
     email: z.string().email(),
@@ -11,13 +16,14 @@ const schema = zfd.formData({
 })
 
 export const actions = {
-    sign_in: async ({request, locals: { supabase } }): Promise<SignInResponse> => {
+    sign_in: async ({request, locals: { supabase } }): Promise<Response> => {
         const formData = await request.formData()
 
         const result = schema.safeParse(formData)
 
         if(!result.success){
             return { 
+                action_id: 'sign_in',
                 errors: result.error.issues.map((issue)=>{
                     return issue.message
                 })
@@ -28,7 +34,11 @@ export const actions = {
 
         const { error } = await supabase.auth.signInWithPassword({ email, password })
         if(error){
-            return { errors: [error.message] }
+            return { 
+                action_id: 'sign_in',
+                errors: [error.message]
+            }
         }
     },
+
 }
