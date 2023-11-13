@@ -24,7 +24,7 @@ export const actions = {
             console.error(result.error)
             return 
         }
-        
+
         const { data, error } = await  supabase.functions.invoke('embed', {
             body: {
                 input: result.data.embed
