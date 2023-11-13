@@ -41,8 +41,8 @@ serve(async (req) => {
 
   // Generate the embedding from the user input
   const output = await pipe(input, {
-    pooling: 'mean',
-    normalize: true,
+      pooling: 'mean',
+      normalize: true,
   });
 
   // Extract the embedding output
